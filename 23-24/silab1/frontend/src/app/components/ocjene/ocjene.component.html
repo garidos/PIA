@@ -1,0 +1,14 @@
+<table *ngIf="ocjene.length>0">
+    <tr>
+        <th>Sifra</th>
+        <th>Datum</th>
+        <th>Ocjena</th>
+    </tr>
+    <tr *ngFor="let ispit of ocjene" [ngClass]="{'novi': ispit.student == noviIspit.student && ispit.sifra == noviIspit.sifra}">
+        <td>{{ispit.sifra}}</td>
+        <td>{{ispit.datum}}</td>
+        <td>{{ispit.ocjena}}</td>
+    </tr>
+</table>
+<span class="err">{{errMessage}}</span> <br>
+<button (click)="nazad()">Nazad</button>

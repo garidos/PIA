@@ -1,0 +1,12 @@
+table, th, td, tr {
+    border: 1px solid;
+}
+
+.err {
+    color: red;
+    font-weight: bold;
+}
+
+.novi {
+    color: red;
+}

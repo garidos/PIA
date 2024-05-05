@@ -1,0 +1,40 @@
+<div class="forma1">
+    <form>
+        <label for="indeks">Broj indeksa: </label>
+        <input type="text"  id="indeks" [(ngModel)]="indeks" placeholder="gggg/bbbb" name="ind">
+        <button (click)="forma1()">Potvrdi</button>
+        <span>{{errMessage1}}</span>
+    </form>
+</div>
+<hr>
+<div class="forma2">
+    <form>
+        <label for="datumOd">DatumOd: </label>
+        <input type="date" id="datumOd" [(ngModel)]="datumOd" name="datOd"> <br>    
+        <label for="datumDo">DatumDo: </label>
+        <input type="date" id="datumDo" [(ngModel)]="datumDo" name="datDo">
+        <button (click)="forma2()">Potvrdi</button>
+        <span>{{errMessage2}}</span>
+    </form>
+</div>
+<hr>
+<div class="forma3">
+    <form>
+        <table>
+            <tr>
+                <td><label for="indeks">Indeks: </label></td>
+                <td><input type="text" id="indeks" [(ngModel)]="indeks" placeholder="gggg/bbbb" name="ind"></td>
+            </tr>
+            <tr>
+                <td><label for="sifra">Sifra predmeta: </label></td>
+                <td><input type="text" id="sifra" [(ngModel)]="sifra" name="sif"></td>
+            </tr>
+            <tr>
+                <td><label for="ocjena">Ocjena: </label></td>
+                <td><input type="number" id="ocjena" [(ngModel)]="ocjena" name="ocj"></td>
+                <td> <button (click)="forma3()">Potvrdi</button></td>
+            </tr>
+        </table>      
+        <span>{{errMessage3}}</span>
+    </form>
+</div>

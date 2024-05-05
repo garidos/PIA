@@ -1,0 +1,10 @@
+th {
+    text-align: left;
+    padding-right: 20px;
+}
+
+
+.error-msg {
+    color: red;
+    font-weight: bold;
+}

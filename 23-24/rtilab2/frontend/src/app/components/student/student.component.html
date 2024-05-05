@@ -1,0 +1,19 @@
+<div class="logout">
+    <button (click)="logout()" id="logout-button">Log out</button>
+</div>
+<div class="student">
+    <span>
+        <h2>{{logged.username}}</h2>
+        <p>{{logged.firstName}} {{logged.lastName}}</p> 
+    </span>
+</div>
+
+<div class="student-body">
+    <h2>Aktuelne aktivnosti</h2><br>
+    <table>
+        <tr *ngFor="let activity of activities">
+            <td>{{activity.name}}</td>
+            <td><a (click)="goToPrijava(activity)">Prijava</a></td>
+        </tr>
+    </table>
+</div>

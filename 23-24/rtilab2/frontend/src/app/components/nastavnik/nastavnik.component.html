@@ -1,0 +1,22 @@
+<button (click)="logout()">Log out</button>
+<table>
+  <tr>
+    <th>Naziv</th>
+    <th>Datum-vreme</th>
+    <th>status</th>
+    <th>sala1</th>
+    <th>sala2</th>
+    <th>sala3</th>
+  </tr>
+  <tr *ngFor="let activity of activities" [class.notActive]="activity.status==0">
+    <td>{{activity.name}}</td>
+    <td>{{activity.dateTime}}</td>
+    <td>{{activity.status}}</td>
+    <td>{{activity.sala1}}</td>
+    <td>{{activity.sala2}}</td>
+    <td>{{activity.sala3}}</td>
+    <td>
+      <button (click)="changeStatus(activity)">Promeni status</button>
+    </td>
+  </tr>
+</table>

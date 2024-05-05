@@ -1,0 +1,20 @@
+
+<table>
+    <tr>
+        <th>Naziv:</th>
+        <td>{{activity.name}}</td>
+    </tr>
+    <tr>
+        <th>Datum-vreme:</th>
+        <td>{{activity.dateTime}}</td>
+    </tr>
+</table>
+<h3>Sale: </h3>
+<div *ngIf="!prijavljen">
+    <button [disabled]="activity.sala1==0" *ngIf="activity.sala1>=0" (click)="prijava(1)">Sala1({{activity.sala1}})</button> <br>
+    <button [disabled]="activity.sala2==0" *ngIf="activity.sala2>=0" (click)="prijava(2)">Sala2({{activity.sala2}})</button> <br>
+    <button [disabled]="activity.sala3==0" *ngIf="activity.sala2>=0" (click)="prijava(3)">Sala2({{activity.sala3}})</button>
+</div>
+<p *ngIf="prijavljen" class="error-msg">Vec ste prijavljeni za ovu aktivnost!</p>
+<a routerLink="../student">Nazad</a>
+

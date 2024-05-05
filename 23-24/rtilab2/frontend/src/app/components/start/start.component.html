@@ -1,0 +1,35 @@
+<form #myForm="ngForm">
+  <table>
+    <tr>
+      <th>
+        <label for="usr">Korisnicko ime</label>
+      </th>
+      <th>
+        <input type="text"  [(ngModel)]="username" id="usr" name="user">
+      </th>
+      <th>
+        <select  [(ngModel)]="type" name="type">
+          <option value="student">Student</option>
+          <option value="nastavnik">Nastavnik</option>
+        </select> <br>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <label for="psw">Lozinka</label>
+      </th>
+      <th>
+        <input type="password"  [(ngModel)]="password" id="psw" name="pass">
+      </th>
+    </tr>
+    <tr>
+      <th>
+
+      </th>
+      <th>
+        <button type="button" (click)="login(); myForm.resetForm()">Login</button>
+      </th>
+    </tr>
+  </table>
+</form>
+<span *ngIf="flag">{{errorMsg}}</span>

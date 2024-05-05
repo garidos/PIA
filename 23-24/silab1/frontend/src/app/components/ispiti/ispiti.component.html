@@ -1,0 +1,14 @@
+<table *ngIf="ispiti.length>0">
+    <tr>
+        <th>Student</th>
+        <th>Sifra</th>
+        <th>Ocjena</th>
+    </tr>
+    <tr *ngFor="let ispit of ispiti">
+        <td>{{ispit.student}}</td>
+        <td>{{ispit.sifra}}</td>
+        <td>{{ispit.ocjena}}</td>
+    </tr>
+</table>
+<span class="err">{{errMsg}}</span> <br>
+<button (click)="nazad()">Nazad</button>

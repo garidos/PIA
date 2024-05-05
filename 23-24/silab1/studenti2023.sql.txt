@@ -1,0 +1,39 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+
+CREATE DATABASE IF NOT EXISTS `studenti2023` DEFAULT CHARACTER SET utf16 COLLATE utf16_bin;
+USE `studenti2023`;
+
+CREATE TABLE IF NOT EXISTS `ispiti` (
+  `idI` int NOT NULL AUTO_INCREMENT,
+  `sifra` varchar(45) COLLATE utf16_bin NOT NULL,
+  `student` varchar(45) COLLATE utf16_bin NOT NULL,
+  `datum` date NOT NULL,
+  `ocena` int NOT NULL,
+  PRIMARY KEY (`idI`),
+  KEY `student` (`student`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
+
+INSERT INTO `ispiti` (`idI`, `sifra`, `student`, `datum`, `ocena`) VALUES
+(1, 'SI4PIA', '2019/0234', '2023-07-13', 9),
+(2, 'IR3PPK', '2020/0100', '2023-09-14', 10),
+(3, 'IR2PPK', '2020/0200', '2023-09-17', 9),
+(4, 'SI4MIPS', '2019/0234', '2023-08-15', 7);
+
+CREATE TABLE IF NOT EXISTS `studenti` (
+  `ime` varchar(45) COLLATE utf16_bin NOT NULL,
+  `prezime` varchar(45) COLLATE utf16_bin NOT NULL,
+  `godina` int NOT NULL,
+  `indeks` varchar(45) COLLATE utf16_bin NOT NULL,
+  PRIMARY KEY (`indeks`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
+
+INSERT INTO `studenti` (`ime`, `prezime`, `godina`, `indeks`) VALUES
+('Mina', 'Minic', 4, '2017/0167'),
+('Ana', 'Andjelkovic', 4, '2019/0234'),
+('Jova', 'Jovic', 3, '2020/0100'),
+('Mirko', 'Mirkovic', 2, '2020/0200');
+
+
+ALTER TABLE `ispiti`
+  ADD CONSTRAINT `student` FOREIGN KEY (`student`) REFERENCES `studenti` (`indeks`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+

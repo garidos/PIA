@@ -1,0 +1,35 @@
+.logout {
+    display: flex;
+    justify-content: flex-end;
+    background-color: gainsboro;
+}
+
+h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+.student {
+    background-color: lightsteelblue;
+    display: flex;
+    justify-content: flex-start;
+    padding: 1%;
+}
+
+.student-body {
+    background-color: gainsboro;
+    padding: 10px;
+}
+
+#logout-button {
+    width: 10%;
+    height: 30px;   
+    background-color: dimgray;
+    color: white;
+    border-radius: 5px;
+}
+
+.error-msg {
+    color: red;
+    font-weight: bold;
+}

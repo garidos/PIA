@@ -1,0 +1,17 @@
+.forma1 {
+    background-color: cadetblue;
+}
+
+.forma2 {
+    background-color: tan;
+}
+
+.forma3 {
+    background-color: gainsboro;
+}
+
+
+span {
+    color: red;
+    font-weight: bold;
+}
