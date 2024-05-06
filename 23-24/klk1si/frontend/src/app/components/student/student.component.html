@@ -1,0 +1,29 @@
+<div class="top">
+    <table>
+        <tr>
+            <th>Ime: </th>
+            <td>{{student.ime}}</td>
+        </tr>
+        <tr>
+            <th>Prezime: </th>
+            <td>{{student.prezime}}</td>
+        </tr>
+        <tr>
+            <th>Korisnicko ime: </th>
+            <td>{{student.korisnicko_ime}}</td>
+        </tr>
+    </table>
+</div>
+<div class="akt">
+    <table>
+        <tr>
+            <th>Naziv</th>
+        </tr>
+        <tr *ngFor="let aktivnost of aktivnosti">
+            <td>{{aktivnost.naziv}}</td>
+            <td><a (click)="prijava(aktivnost)">Prijava</a></td>
+        </tr>
+    </table>
+</div>
+<app-logout></app-logout>
+

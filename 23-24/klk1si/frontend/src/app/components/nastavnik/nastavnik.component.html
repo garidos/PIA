@@ -1,0 +1,75 @@
+<div id="akt">
+    <table>
+        <tr>
+            <th>Naziv</th>
+            <th>Datum i vrijeme</th>
+            <th>Status</th>
+            <th>Sala1</th>
+            <th>Sala2</th>
+            <th>Sala3</th>
+        </tr>
+        <tr *ngFor="let aktivnost of aktivnosti" [ngClass]="{aktuelna: aktivnost.status==0}">
+            <td>{{aktivnost.naziv}}</td>
+            <td>{{aktivnost.datum_vreme}}</td>
+            <td>{{aktivnost.status}}</td>
+            <td>{{aktivnost.sala1}}</td>
+            <td>{{aktivnost.sala2}}</td>
+            <td>{{aktivnost.sala3}}</td>
+            <td><button (click)="promjeniStatus(aktivnost)">Promjeni status</button></td>
+        </tr>
+    </table>
+</div>
+<hr>
+<div>   
+    <form >
+        <table>
+            <tr>
+                <td>
+                    <label for="naz">Naziv</label>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="naziv" name="naziv" id="naz" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="dv">Datum i vrijeme</label>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]="datum_vreme" name="datum_vreme" id="dv">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="s1">Sala1({{sale[0]}})</label>
+                </td>
+                <td>
+                    <input type="checkbox" [(ngModel)]="sale_check[0]" id="s1" name="sala1">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="s2">Sala2({{sale[1]}})</label>
+                </td>
+                <td>
+                    <input type="checkbox" [(ngModel)]="sale_check[1]" id="s2" name="sala2">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="s3">Sala3({{sale[2]}})</label>
+                </td>
+                <td>
+                    <input type="checkbox" [(ngModel)]="sale_check[2]" id="s3" name="sala3">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" (click)="dodaj()" value="Dodaj">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<app-logout></app-logout>

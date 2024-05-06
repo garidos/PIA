@@ -1,0 +1,33 @@
+<div>
+    <table>
+        <tr>
+            <th>Naziv: </th>
+            <td>{{aktivnost.naziv}}</td>
+        </tr>
+        <tr>
+            <th>Datum i vrijeme: </th>
+            <td>{{aktivnost.datum_vreme}}</td>
+        </tr>
+    </table>
+</div>
+<div *ngIf="!prijavljen">
+    <table>
+        <tr *ngIf="aktivnost.sala1 >= 0">
+            <td>
+                <button (click)="prijava(1)" [disabled]="aktivnost.sala1==0">Sala1({{aktivnost.sala1}})</button>
+            </td>
+        </tr>
+        <tr *ngIf="aktivnost.sala2 >= 0">
+            <td>
+                <button (click)="prijava(2)" [disabled]="aktivnost.sala2==0">Sala2({{aktivnost.sala2}})</button>
+            </td>
+        </tr>
+        <tr *ngIf="aktivnost.sala3 >= 0">
+            <td>
+                <button (click)="prijava(3)" [disabled]="aktivnost.sala3==0">Sala3({{aktivnost.sala3}})</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<span class="err">{{errorMessage}}</span>
+<app-logout></app-logout>

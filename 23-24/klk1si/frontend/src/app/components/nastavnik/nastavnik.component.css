@@ -1,0 +1,19 @@
+
+.aktuelna {
+    background-color: orange;
+}
+
+
+#akt table {
+    border: 1px solid;
+}
+
+#akt tr {
+    border: 1px solid;
+}
+#akt th {
+    border: 1px solid;
+}
+#akt td {
+    border: 1px solid;
+}
