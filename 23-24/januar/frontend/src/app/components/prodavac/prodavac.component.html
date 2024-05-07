@@ -1,0 +1,27 @@
+<table>
+    <tr>
+        <th>Naziv</th>
+        <th>Datum pocetka</th>
+        <th>Datum zavrsetka</th>
+    </tr>
+    <tr *ngFor="let aukcija of aukcije" [ngClass]="{ 'istekla': checkIstekla(aukcija.aukcija), 'aktivna': !checkIstekla(aukcija.aukcija) }">
+        <td>{{aukcija.aukcija.naziv}}</td>
+        <td>{{aukcija.aukcija.pocetak}}</td>
+        <td>{{aukcija.aukcija.kraj}}</td>
+        <td>
+            <table *ngIf="checkIstekla(aukcija.aukcija)" class="normal">
+                <tr>
+                    <th>Naziv</th>
+                    <th>Ime vlasnika</th>
+                    <th>Prezime vlasnika</th>
+                </tr>
+                <tr *ngFor="let umetnina of aukcija.umetnine">
+                    <td>{{umetnina.naziv}}</td>
+                    <td>{{korisnici.get(umetnina.vlasnik)?.ime}}</td>
+                    <td>{{korisnici.get(umetnina.vlasnik)?.prezime}}</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<app-logout></app-logout>

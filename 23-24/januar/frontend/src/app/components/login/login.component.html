@@ -1,0 +1,13 @@
+<form>
+    <label for="ime">Korisnicko ime: </label>
+    <input type="text" id="ime" [(ngModel)]="korisnicko_ime" name="kime"><br>
+    <label for="loz">Lozinka: </label>
+    <input type="password" id="loz" [(ngModel)]="lozinka" name="lozinka"><br>
+    <label>Tip: </label> <br>
+    <label for="kupac">Kupac</label>
+    <input type="radio" id="kupac" value="kupac" [(ngModel)]="tip" name="tip_kupac"> <br>
+    <label for="prodavac">Prodavac</label>
+    <input type="radio" id="prodavac" value="prodavac" [(ngModel)]="tip" name="tip_prodavac"><br>
+    <button (click)="login()">Login</button>
+    <span>{{errMessage}}</span>
+</form>

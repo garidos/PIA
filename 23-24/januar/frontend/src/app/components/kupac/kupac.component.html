@@ -1,0 +1,28 @@
+Ime: {{kupac.ime}} <br>
+Prezime: {{kupac.prezime}} <br>
+Mejl: {{kupac.mejl}} <hr>
+<table>
+    <tr>
+        <th>Naziv</th>
+        <th>Datum pocetka</th>
+        <th>Datum zavrsetka</th>
+    </tr>
+    <tr *ngFor="let aukcija of aukcije">
+        <td><a (click)="goToAukcija(aukcija)">{{aukcija.naziv}}</a></td>
+        <td>{{aukcija.pocetak}}</td>
+        <td>{{aukcija.kraj}}</td>
+    </tr>
+</table>
+<hr>
+<table *ngIf="kupljene.length>0">
+    <tr>
+        <th>Naziv</th>
+        <th>Vrijednost</th>
+    </tr>
+    <tr *ngFor="let umetnina of kupljene">
+        <td>{{umetnina.naziv}}</td>
+        <td>{{umetnina.ponuda}}</td>
+    </tr>
+</table>
+<span>{{errMessage}}</span>
+<app-logout></app-logout>

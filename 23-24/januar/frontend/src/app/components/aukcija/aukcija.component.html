@@ -1,0 +1,20 @@
+<table>
+    <tr>
+        <th>Naziv</th>
+        <th>Najveca ponuda</th>
+    </tr>
+    <tr *ngFor="let umetnina of umetnine">
+        <td>{{umetnina.umetnina.naziv}}</td>
+        <td>{{umetnina.umetnina.ponuda}}</td>
+        <td>
+            <input type="number" [(ngModel)]="umetnina.novaPonuda">
+        </td>
+        <td>
+            <button (click)="potvrdi(umetnina)">Potvrdi</button>
+        </td>
+        <td>
+            <span>{{umetnina.errMessage}}</span>
+        </td>
+    </tr>
+</table>
+<app-logout></app-logout>
