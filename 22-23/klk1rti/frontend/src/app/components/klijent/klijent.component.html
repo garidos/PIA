@@ -1,0 +1,24 @@
+Ime: {{klijent.ime}}<br>
+Prezime: {{klijent.prezime}}<br>
+I-mejl: {{klijent.mejl}}
+<hr>
+<table>
+    <tr>
+        <th>Tip</th>
+        <th>Adresa</th>
+        <th>Broj prostorija</th>
+        <th>Kvadratura</th>
+        <th>Trenutno stanje</th>
+    </tr>
+    <tr *ngFor="let objekat of objekti" [ngClass]="{ 'zeleno': objekat.stanje == 'renoviran'}">
+        <th>{{objekat.tip}}</th>
+        <th>{{objekat.adresa}}</th>
+        <th>{{objekat.prostorije}}</th>
+        <th>{{objekat.kvadratura}}</th>
+        <th>{{objekat.stanje}}</th>
+        <th *ngIf="objekat.stanje != 'renoviran' && objekat.stanje != 'u toku renoviranje'">
+            <button (click)="renoviraj(objekat)">Renoviraj</button>
+        </th>
+    </tr>
+</table>
+<app-logout></app-logout>

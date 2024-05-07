@@ -1,0 +1,13 @@
+<form>
+    <label for="kor_ime">Korisnicko ime: </label>
+    <input type="text" [(ngModel)]="kor_ime" name="kime" id="kor_ime"><br>
+    <label for="loz">Lozinka: </label>
+    <input type="password" [(ngModel)]="lozinka" name="lozinka" id="loz"><br>
+    <label for="tip">Tip: </label>
+    <select name="tip" [(ngModel)]="tip" id="tip">
+        <option value="klijent">klijent</option>
+        <option value="dizajner">dizajner</option>
+    </select> <br>
+    <button (click)="login()">Login</button> <br>
+    <span>{{errMessage}}</span>
+</form>

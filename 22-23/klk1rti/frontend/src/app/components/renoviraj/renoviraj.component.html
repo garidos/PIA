@@ -1,0 +1,18 @@
+<form *ngIf="!closed">
+    <table>
+        <tr>
+            <th>Ime</th>
+            <th>Prezime</th>
+        </tr>
+        <tr *ngFor="let dizajner of dizajneri">
+            <td>{{dizajner.ime}}</td>
+            <td>{{dizajner.prezime}}</td>
+            <td>
+                <input type="radio" [value]="dizajner.kor_ime" name="dizajner" [(ngModel)]="izabran_dizajner">
+            </td>
+        </tr>
+    </table>
+    <button (click)="izaberi()">Potvrdi</button>
+</form>
+<span *ngIf="closed">Ovaj objekat je vec renoviran ili je u procesu renoviranja!</span>
+<app-logout></app-logout>

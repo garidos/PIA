@@ -1,0 +1,81 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+SET @@global.time_zone='+00:00';
+SET @@session.time_zone='+00:00';
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+DROP DATABASE IF EXISTS `dekor2023`;
+CREATE DATABASE IF NOT EXISTS `dekor2023` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `dekor2023`;
+
+DROP TABLE IF EXISTS `korisnici`;
+CREATE TABLE IF NOT EXISTS `korisnici` (
+  `kor_ime` varchar(45) COLLATE utf8_bin NOT NULL,
+  `lozinka` varchar(45) COLLATE utf8_bin NOT NULL,
+  `ime` varchar(45) COLLATE utf8_bin NOT NULL,
+  `prezime` varchar(45) COLLATE utf8_bin NOT NULL,
+  `mejl` varchar(45) COLLATE utf8_bin NOT NULL,
+  `tip` varchar(45) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`kor_ime`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+INSERT INTO `korisnici` (`kor_ime`, `lozinka`, `ime`, `prezime`, `mejl`, `tip`) VALUES
+('aca', 'aca123', 'Aleksandar', 'Nenadovic', 'aca@gmail.com', 'klijent'),
+('maja', 'maja123', 'Maja', 'Jovkovic', 'maja@gmail.com', 'klijent'),
+('mare', 'mare123', 'Marko', 'Stanisic', 'mare@gmail.com', 'dizajner'),
+('mira', 'mira123', 'Mirka', 'Matic', 'mira@gmail.com', 'dizajner'),
+('pera', 'pera123', 'Petar', 'Manic', 'pera@gmail.com', 'dizajner');
+
+DROP TABLE IF EXISTS `objekti`;
+CREATE TABLE IF NOT EXISTS `objekti` (
+  `idO` int(11) NOT NULL,
+  `tip` varchar(45) COLLATE utf8_bin NOT NULL,
+  `adresa` varchar(45) COLLATE utf8_bin NOT NULL,
+  `prostorije` int(11) NOT NULL,
+  `kvadratura` int(11) NOT NULL,
+  `stanje` varchar(45) COLLATE utf8_bin NOT NULL,
+  `klijent` varchar(45) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`idO`),
+  KEY `klijent` (`klijent`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+INSERT INTO `objekti` (`idO`, `tip`, `adresa`, `prostorije`, `kvadratura`, `stanje`, `klijent`) VALUES
+(1, 'stan', 'Adresa 54', 3, 125, 'staro', 'aca'),
+(2, 'kuca', 'Adresa 76', 5, 209, 'renoviran', 'aca'),
+(3, 'stan', 'Adresa 90', 2, 47, 'staro', 'maja'),
+(4, 'stan', 'Adresa 56', 1, 35, 'u toku renoviranje', 'aca'),
+(5, 'kuca', 'Adresa 92', 3, 126, 'renoviran', 'maja'),
+(6, 'stan', 'Adresa 31', 3, 69, 'nov', 'aca');
+
+DROP TABLE IF EXISTS `poslovi`;
+CREATE TABLE IF NOT EXISTS `poslovi` (
+  `idP` int(11) NOT NULL AUTO_INCREMENT,
+  `dizajner` varchar(45) COLLATE utf8_bin NOT NULL,
+  `klijent` varchar(45) COLLATE utf8_bin NOT NULL,
+  `progres` int(11) NOT NULL,
+  `objekat` int(11) NOT NULL,
+  PRIMARY KEY (`idP`),
+  KEY `dizajner` (`dizajner`),
+  KEY `klijenti` (`klijent`),
+  KEY `objekat` (`objekat`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+INSERT INTO `poslovi` (`idP`, `dizajner`, `klijent`, `progres`, `objekat`) VALUES
+(1, 'mare', 'aca', 3, 4);
+
+
+ALTER TABLE `objekti`
+  ADD CONSTRAINT `klijent` FOREIGN KEY (`klijent`) REFERENCES `korisnici` (`kor_ime`);
+
+ALTER TABLE `poslovi`
+  ADD CONSTRAINT `dizajner` FOREIGN KEY (`dizajner`) REFERENCES `korisnici` (`kor_ime`),
+  ADD CONSTRAINT `klijenti` FOREIGN KEY (`klijent`) REFERENCES `korisnici` (`kor_ime`),
+  ADD CONSTRAINT `objekat` FOREIGN KEY (`objekat`) REFERENCES `objekti` (`idO`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

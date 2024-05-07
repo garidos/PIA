@@ -1,0 +1,24 @@
+<table *ngIf="errMessage.length==0">
+    <tr>
+        <th>Ime klijenta</th>
+        <th>Prezime klijenta</th>
+        <th>Tip</th>
+        <th>Adresa</th>
+        <th>Stanje</th>
+    </tr>
+    <tr>
+        <td>{{klijent.ime}}</td>
+        <td>{{klijent.prezime}}</td>
+        <td>{{objekat.tip}}</td>
+        <td>{{objekat.adresa}}</td>
+        <td>{{objekat.stanje}}</td>
+        <td *ngIf="trenutni_posao.progres<5">
+            <button (click)="napredak()">Napredak</button>
+        </td>
+        <td *ngIf="trenutni_posao.progres==5">
+            <button (click)="zavrsi()">Zavrsi</button>
+        </td>
+    </tr>
+</table>
+<span>{{errMessage}}</span>
+<app-logout></app-logout>
