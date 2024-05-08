@@ -1,0 +1,64 @@
+<form>
+    <label for="sadrz">Sadrzaj: </label>
+    <input type="text" id="sadrz" [(ngModel)]="sadrzaj" name="sadrzaj"> <br>
+    <label for="clan">Clan tima: </label>
+    <select id="clan" [(ngModel)]="izabran" name="clan">
+        <option *ngFor="let clan of clanovi" [value]="clan.korisnicko_ime">{{clan.korisnicko_ime}}</option> <br>
+    </select> <br>
+    <button (click)="potvrdi()">Potvrdi</button>
+</form> <hr>
+<b>Neobavljeni zadaci:</b> <br>
+Licni: <br>
+<table>
+    <tr>
+        <th></th>
+        <th>Sadrzaj</th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let zadatak of zadaci">
+        <td  *ngIf="zadatak.tip=='licni' && zadatak.obavljen==false">
+            <input type="checkbox" (click)="obavi(zadatak)">
+        </td>
+        <td  *ngIf="zadatak.tip=='licni' && zadatak.obavljen==false">
+            {{zadatak.sadrzaj}}
+        </td>
+        <td  *ngIf="zadatak.tip=='licni' && zadatak.obavljen==false">
+            <button (click)="obrisi(zadatak)">Obrisi</button>
+        </td>     
+    </tr>
+</table> <br>
+Delegirani: <br>
+<table>
+    <tr>
+        <th></th>
+        <th>Sadrzaj</th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let zadatak of zadaci">
+        <td  *ngIf="zadatak.tip=='delegiran' && zadatak.obavljen==false">
+            <input type="checkbox" (click)="obavi(zadatak)">
+        </td>
+        <td  *ngIf="zadatak.tip=='delegiran' && zadatak.obavljen==false">
+            {{zadatak.sadrzaj}}
+        </td>
+        <td  *ngIf="zadatak.tip=='delegiran' && zadatak.obavljen==false">
+            <button (click)="obrisi(zadatak)">Obrisi</button>
+        </td>     
+    </tr>
+</table> <hr>
+<b>Obavljeni zadaci:</b> <br>
+<table>
+    <tr>
+        <th>Sadrzaj</th>
+        <th>Kategorija</th>
+
+    </tr>
+    <tr *ngFor="let zadatak of zadaci">
+        <td *ngIf="zadatak.obavljen==true">{{zadatak.sadrzaj}}</td>
+        <td *ngIf="zadatak.obavljen==true">{{zadatak.tip}}</td>
+        <td *ngIf="zadatak.obavljen==true">
+            <button (click)="vrati(zadatak)">Vrati</button>
+        </td>   
+    </tr>
+</table> 
+<app-logout></app-logout>

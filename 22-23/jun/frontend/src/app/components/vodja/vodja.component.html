@@ -1,0 +1,13 @@
+<table>
+    <tr>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th>Broj Obavljenih zadataka</th>
+    </tr>
+    <tr *ngFor="let clan of clanovi" [ngClass]="{'zelena': clan.brojObavljenih > 5}">
+        <td>{{clan.korisnik.ime}}</td>
+        <td>{{clan.korisnik.prezime}}</td>
+        <td>{{clan.brojObavljenih}}</td>
+    </tr>
+</table>
+<app-logout></app-logout>

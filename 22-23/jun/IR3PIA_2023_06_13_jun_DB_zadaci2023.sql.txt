@@ -1,0 +1,99 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jun 12, 2023 at 05:22 PM
+-- Server version: 8.0.21
+-- PHP Version: 7.4.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `zadaci2023`
+--
+CREATE DATABASE IF NOT EXISTS `zadaci2023` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `zadaci2023`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `korisnici`
+--
+
+DROP TABLE IF EXISTS `korisnici`;
+CREATE TABLE IF NOT EXISTS `korisnici` (
+  `korisnicko_ime` varchar(50) NOT NULL,
+  `lozinka` varchar(50) NOT NULL,
+  `ime` varchar(50) NOT NULL,
+  `prezime` varchar(50) NOT NULL,
+  `tip` varchar(50) NOT NULL,
+  `tim` int NOT NULL,
+  UNIQUE KEY `korisnicko_ime` (`korisnicko_ime`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `korisnici`
+--
+
+INSERT INTO `korisnici` (`korisnicko_ime`, `lozinka`, `ime`, `prezime`, `tip`, `tim`) VALUES
+('aca', 'aca123', 'Aleksandar', 'Aleksic', 'vodja', 1),
+('daca', 'daca123', 'Danica', 'Dacic', 'clan', 1),
+('daki', 'daki123', 'Danijel', 'Dacic', 'clan', 2),
+('kaca', 'kaca123', 'Katarina', 'Katic', 'vodja', 2),
+('mika', 'mika123', 'Mika', 'Micic', 'clan', 2),
+('pera', 'pera123', 'Petar', 'Peric', 'clan', 1),
+('zika', 'zika123', 'Zivorad', 'Zivic', 'clan', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `zadaci`
+--
+
+DROP TABLE IF EXISTS `zadaci`;
+CREATE TABLE IF NOT EXISTS `zadaci` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `sadrzaj` varchar(50) NOT NULL,
+  `obavljen` tinyint(1) NOT NULL,
+  `tip` varchar(50) NOT NULL,
+  `dodeljen` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `korisnici` (`dodeljen`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `zadaci`
+--
+
+INSERT INTO `zadaci` (`id`, `sadrzaj`, `obavljen`, `tip`, `dodeljen`) VALUES
+(1, 'napisati dnevni izvestaj', 0, 'licni', 'pera'),
+(2, 'pripremiti prezentaciju', 0, 'delegiran', 'pera'),
+(3, 'napisati dnevni izvestaj', 0, 'licni', 'daca'),
+(4, 'napisati dnevni izvestaj', 0, 'licni', 'mika'),
+(5, 'napisati dnevni izvestaj', 0, 'licni', 'zika'),
+(6, 'azurirati sajt', 1, 'licni', 'pera'),
+(7, 'obavestiti klijenta o promeni cenovnika', 1, 'delegiran', 'daca');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `zadaci`
+--
+ALTER TABLE `zadaci`
+  ADD CONSTRAINT `fk_kor_zad` FOREIGN KEY (`dodeljen`) REFERENCES `korisnici` (`korisnicko_ime`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
