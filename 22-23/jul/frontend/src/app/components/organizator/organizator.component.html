@@ -1,0 +1,24 @@
+<table>
+    <tr>
+        <th>Ime klijenta</th>
+        <th>Prezime klijenta</th>
+        <th>Naziv</th>
+        <th>Datum pocetka</th>
+        <th>Datum kraja</th>
+        <th>Hala</th>
+        <th>Broj ljudi</th>
+    </tr>
+    <tr *ngFor="let zahtev of zahtevi" >
+        <td>{{zahtev.klijent.ime}}</td>
+        <td>{{zahtev.klijent.prezime}}</td>
+        <td>{{zahtev.zahtev.naziv}}</td>
+        <td>{{zahtev.zahtev.datum_od.toISOString().substring(0,10)}}</td>
+        <td>{{zahtev.zahtev.datum_do.toISOString().substring(0,10)}}</td>
+        <td>{{zahtev.zahtev.hala}}</td>
+        <td>{{(zahtev.zahtev.broj_ljudi==0?'?':zahtev.zahtev.broj_ljudi)}}</td>
+        <td>
+            <button (click)="prihvati(zahtev.zahtev)" *ngIf="zahtev.zahtev.status=='U obradi' && zahtev.zahtev.datum_od>danas">Prihvati</button>
+        </td>
+    </tr>
+</table>
+<app-logout></app-logout>

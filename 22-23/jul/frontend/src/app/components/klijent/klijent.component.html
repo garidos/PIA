@@ -1,0 +1,35 @@
+Ime: {{klijent.ime}} <br>
+Prezime: {{klijent.prezime}} <br>
+Mejl: {{klijent.mejl}} <hr>
+<form>
+    <label for="naz">Naziv: </label>
+    <input type="text" id="naz" [(ngModel)]="naziv" name="naziv"> <br>
+    <label for="od">Datum pocetka: </label>
+    <input type="date" id="od" [(ngModel)]="datumOd" name="datumOd" (change)="update()"> <br>
+    <label for="do">Datum kraja: </label>
+    <input type="date" id="do" [(ngModel)]="datumDo" name="datumDo" (change)="update()"> <br>
+    <label for="blj">Broj ljudi: </label>
+    <input type="number" id="blj" [(ngModel)]="broj_ljudi" name="br_ljudi" (change)="update()"> <br>
+    <label for="hal">Slobodne hale: </label>
+    <select id="hal" [(ngModel)]="hala" name="hala">
+        <option *ngFor="let hala of slobodne_hale" [value]="hala.naziv">{{hala.naziv}}</option  >
+    </select> <br>
+    <button (click)="potvrdi()" [disabled]="slobodne_hale.length==0">Potvrdi</button>
+</form> <hr>
+<table>
+    <tr>
+        <th>Naziv</th>
+        <th>Datum pocetka</th>
+        <th>Datum kraja</th>
+        <th>Hala</th>
+        <th>Status</th>
+    </tr>
+    <tr *ngFor="let zahtev of zahtevi" [ngClass]="{'zelena': zahtev.status=='Prihvaceno', 'narandzasta' : zahtev.status=='U obradi'}">
+        <td>{{zahtev.naziv}}</td>
+        <td>{{zahtev.datum_od}}</td>
+        <td>{{zahtev.datum_do}}</td>
+        <td>{{zahtev.hala}}</td>
+        <td>{{zahtev.status}}</td>
+    </tr>
+</table>
+<app-logout></app-logout>
