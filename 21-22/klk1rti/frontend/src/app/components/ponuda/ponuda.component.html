@@ -1,0 +1,7 @@
+<span *ngIf="!prihvacen">
+    Ponuda:<span [ngClass]="{'zelena': ponuda<25000}" *ngIf="!prihvacen">{{ponuda}}</span>
+    <button (click)="prihvati()">Prihvati</button>
+</span>
+<span *ngIf="prihvacen">Zahtjev uspjesno sacuvan!</span>
+<button (click)="nazad()">Nazad</button>
+<app-logout></app-logout>

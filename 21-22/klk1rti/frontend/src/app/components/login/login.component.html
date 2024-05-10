@@ -1,0 +1,9 @@
+<form>
+    Korisnicko ime: <input type="text" name="username" [(ngModel)]="username"> <br>
+    Lozinka: <input type="password" name="password" [(ngModel)]="password"> <br>
+    Tip: <br>
+    <input type="radio" name="type" [(ngModel)]="type" value="kupac">Kupac<br>
+    <input type="radio" name="type" [(ngModel)]="type" value="zaposleni">Zaposleni<br>
+    <input type="button" value="Login" (click)="login()"> <br>
+    <span class="error">{{message}}</span>
+</form>

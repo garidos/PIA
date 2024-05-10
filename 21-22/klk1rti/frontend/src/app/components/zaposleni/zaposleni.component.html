@@ -1,0 +1,16 @@
+<table>
+    <tr>
+        <th>Kupac</th>
+        <th>Marka</th>
+        <th>Datum kreiranja</th>
+        <th>Iznos registracije</th>
+    </tr>
+    <tr *ngFor="let za of zahtevi">
+        <td>{{za.zahtev.kupac}}</td>
+        <td>{{za.automobil.marka}}</td>
+        <td>{{za.zahtev.datum}}</td>
+        <td>{{za.automobil.cena_registracije}}</td>
+        <td><button (click)="obrisi(za.zahtev)">Obrisi</button></td>
+    </tr>
+</table>
+<app-logout></app-logout>

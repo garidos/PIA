@@ -1,0 +1,16 @@
+Ime: {{kupac.ime}} <br>
+Prezime: {{kupac.prezime}} <hr>
+<form>
+    Marka: 
+    <select name="auto" [(ngModel)]="izabran_automobil">
+        <option *ngFor="let auto of automobili" [value]="auto.marka">{{auto.marka}}</option>
+    </select> <br>
+    Datum prve registracije: 
+    <input type="date" name="reg" [(ngModel)]="datum"> <br>
+    Snaga motora[kW]: 
+    <input type="number" name="snaga" [(ngModel)]="snaga"> <br>
+    <input type="checkbox" [(ngModel)]="teh_pregled" name="tp">Tehnicki pregled <br>
+    <input type="checkbox" [(ngModel)]="polisa" name="po">Polisa osiguranja <br>
+    <input type="button" (click)="izracunaj()" value="Izracunaj ponudu za registraciju">
+</form>
+<app-logout></app-logout>

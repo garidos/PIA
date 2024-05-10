@@ -1,0 +1,66 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+CREATE DATABASE IF NOT EXISTS `fica2022` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `fica2022`;
+
+DROP TABLE IF EXISTS `automobili`;
+CREATE TABLE IF NOT EXISTS `automobili` (
+  `idA` int(11) NOT NULL,
+  `marka` varchar(45) COLLATE utf8_bin NOT NULL,
+  `cena_registracije` int(11) NOT NULL,
+  PRIMARY KEY (`idA`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+INSERT INTO `automobili` (`idA`, `marka`, `cena_registracije`) VALUES
+(1, 'peugeot', 7000),
+(2, 'alfa romeo', 6700),
+(3, 'opel', 7200),
+(4, 'renault', 6800),
+(5, 'toyota', 7000);
+
+DROP TABLE IF EXISTS `korisnici`;
+CREATE TABLE IF NOT EXISTS `korisnici` (
+  `korisnicko_ime` varchar(45) COLLATE utf8_bin NOT NULL,
+  `lozinka` varchar(45) COLLATE utf8_bin NOT NULL,
+  `ime` varchar(45) COLLATE utf8_bin NOT NULL,
+  `prezime` varchar(45) COLLATE utf8_bin NOT NULL,
+  `tip` varchar(45) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`korisnicko_ime`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+INSERT INTO `korisnici` (`korisnicko_ime`, `lozinka`, `ime`, `prezime`, `tip`) VALUES
+('ana', 'ana123', 'Ana', 'Jovic', 'kupac'),
+('jova', 'jova123', 'Jovan', 'Petrovic', 'kupac'),
+('mika', 'mika123', 'Mirko', 'Adamovic', 'zaposleni'),
+('pera', 'pera123', 'Petar', 'Nikolic', 'zaposleni');
+
+DROP TABLE IF EXISTS `zahtevi`;
+CREATE TABLE IF NOT EXISTS `zahtevi` (
+  `idZ` int(11) NOT NULL AUTO_INCREMENT,
+  `kupac` varchar(45) COLLATE utf8_bin NOT NULL,
+  `automobil` int(11) NOT NULL,
+  `datum` date NOT NULL,
+  `iznos` int(11) NOT NULL,
+  PRIMARY KEY (`idZ`),
+  KEY `kupac` (`kupac`),
+  KEY `auto` (`automobil`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+INSERT INTO `zahtevi` (`idZ`, `kupac`, `automobil`, `datum`, `iznos`) VALUES
+(1, 'ana', 1, '2022-04-12', 16000),
+(2, 'jova', 5, '2022-04-13', 23000);
+
+
+ALTER TABLE `zahtevi`
+  ADD CONSTRAINT `auto` FOREIGN KEY (`automobil`) REFERENCES `automobili` (`idA`),
+  ADD CONSTRAINT `kupac` FOREIGN KEY (`kupac`) REFERENCES `korisnici` (`korisnicko_ime`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
