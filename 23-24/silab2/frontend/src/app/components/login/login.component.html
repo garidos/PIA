@@ -1,0 +1,10 @@
+<form>
+    Korisnicko ime: <input type="text" [(ngModel)]="kor_ime" name="kor_ime"> <br>
+    Lozinka: <input type="password" name="lozinka" [(ngModel)]="lozinka"> <br>
+    <select name="tip" [(ngModel)]="tip">
+        <option value="radnik">Radnik</option>
+        <option value="kupac">Kupac</option>
+    </select>
+    <button (click)="login()">Login</button> 
+    <span class="err">{{message}}</span>
+</form>

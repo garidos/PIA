@@ -1,0 +1,27 @@
+<h2>Lista zelja</h2>
+<table>
+    <tr>
+        <th>Proizvod</th>
+        <th>Cijena</th>
+        <th>Kupio</th>
+    </tr>
+    <tr *ngFor="let p of korisnik.lista">
+        <td>{{p.proizvod}}</td>
+        <td>{{p.cena}}</td>
+        <td *ngIf="p.kupio != ''">{{p.anonimno ? "anonimno" : p.kupio}}</td>
+    </tr> 
+</table>
+<hr>
+<h2>Dodaj proizvod</h2>
+<form>
+    Naziv: <input type="text" name="naziv" [(ngModel)]="naziv"> <br>
+    Cijena: <input type="text" name="cijena" [(ngModel)]="cijena">
+    <button (click)="dodaj()">Dodaj</button>
+</form>
+<hr>
+<h2>Liste zelja</h2>
+<select [(ngModel)]="izabran" name="izabran">
+    <option *ngFor="let o of ostali" value="{{o.korisnickoIme}}">{{o.korisnickoIme}}</option>
+</select>
+<button (click)="vidiListu()">Vidi listu</button>
+<app-logout></app-logout>

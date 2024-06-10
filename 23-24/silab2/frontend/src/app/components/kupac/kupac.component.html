@@ -1,0 +1,24 @@
+<table>
+    <tr>
+        <th>Naziv</th>
+        <th>Cena</th>
+        <th>Broj lajkova</th>
+        <th>Kreator</th>
+    </tr>
+    <tr *ngFor="let p of proizvodi">
+        <td [ngClass]="{'prijavljeni': p.kreator == kupac.kor_ime}">{{p.naziv}}</td>
+        <td>{{p.cena}}</td>
+        <td>{{p.lajkovi}}</td>
+        <td>{{korisnici.get(p.kreator)?.ime + ' ' + korisnici.get(p.kreator)?.prezime}}</td>
+        <td>
+            <button (click)="like(p)">Lajk</button>
+        </td>
+    </tr>
+</table>
+<hr>
+<form>
+    Naziv proizvoda: <input type="text" [(ngModel)]="naziv" name="naziv"> <br>
+    Opis: <input type="text" [(ngModel)]="opis" name="opis"> <br>
+    <button (click)="dodaj()">Dodaj</button>
+</form>
+<app-logout></app-logout>

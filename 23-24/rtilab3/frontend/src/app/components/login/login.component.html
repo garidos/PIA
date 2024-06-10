@@ -1,0 +1,7 @@
+<form>
+    Korisniko ime: <input type="text" [(ngModel)]="kor_ime" name="kor_ime"> <br>
+    Lozinka: <input type="password" [(ngModel)]="lozinka" name="lozinka"> <br>
+    <input type="checkbox" [(ngModel)]="admin" name="tip"> administrator <br>
+    <button (click)="login()">Login</button> <br>
+    <span class="err">{{message}}</span>
+</form>

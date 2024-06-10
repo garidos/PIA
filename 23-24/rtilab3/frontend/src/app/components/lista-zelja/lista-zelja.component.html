@@ -1,0 +1,19 @@
+<h2>Lista zelja korisnika {{izabran.korisnickoIme}}</h2>
+<table>
+    <tr>
+        <th>Proizvod</th>
+        <th>Cijena</th>
+        <th>Kupio</th>
+    </tr>
+    <tr *ngFor="let p of izabran.lista" [ngClass]="{'kupljen': p.kupio != null, 'moze': p.kupio == null && korisnik.naStanju >= p.cena}">
+        <td>{{p.proizvod}}</td>
+        <td>{{p.cena}}</td>
+        <td *ngIf="p.kupio == null && korisnik.naStanju >= p.cena ">
+            <button (click)="kupi(p)">Kupi</button>
+            <button (click)="kupi(p, true)">Kupi anonimno</button>
+        </td>
+    </tr> 
+</table>
+<hr>
+<button (click)="nazad()">Nazad</button>
+<app-logout></app-logout>

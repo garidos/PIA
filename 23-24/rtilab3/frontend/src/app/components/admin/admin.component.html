@@ -1,0 +1,22 @@
+<h2>Korisnici</h2>
+<hr>
+<table>
+    <tr>
+        <th>Korisnicko ime</th>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th>Potroseno</th>
+        <th>Na stanju</th>
+    </tr>
+    <tr *ngFor="let k of korisnici">
+        <td>{{k.korisnickoIme}}</td>
+        <td>{{k.ime}}</td>
+        <td>{{k.prezime}}</td>
+        <td>{{k.potroseno}}</td>
+        <td>{{k.naStanju}}</td>
+        <td *ngIf="k.naStanju < 5000">
+            <button  (click)="uplati(k)">Uplati 5000</button>
+        </td>
+    </tr>
+</table>
+<app-logout></app-logout>

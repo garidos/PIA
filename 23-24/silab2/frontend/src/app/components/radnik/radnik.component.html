@@ -1,0 +1,23 @@
+Ime: {{radnik.ime}} <br>
+Prezime: {{radnik.prezime}} <br>
+Opstina: {{radnik.opstina}} <hr>
+<table>
+    <tr>
+        <th>Naziv</th>
+        <th>Opis</th>
+    </tr>
+    <tr *ngFor="let p of proizvodi">
+        <td>{{p.naziv}}</td>
+        <td>{{p.opis}}</td>
+        <td>
+            <input type="text" name="cena" [(ngModel)]="p.cena">
+        </td>
+        <td>
+            <button (click)="odobri(p)">Odobri</button>
+        </td>
+        <td>
+            <button (click)="odbij(p)">Odbij</button>
+        </td>
+    </tr>
+</table>
+<app-logout></app-logout>
