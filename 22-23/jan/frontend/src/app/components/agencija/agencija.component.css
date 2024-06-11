@@ -1,0 +1,13 @@
+.zuta {
+    background-color: yellow;
+}
+
+table, tr, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.err{
+    color: red;
+  }

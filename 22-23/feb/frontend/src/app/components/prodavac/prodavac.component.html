@@ -1,0 +1,43 @@
+<table>
+    <tr>
+        <th>Ime kupca</th>
+        <th>Proizvodi</th>
+        <th>Ukupan iznos</th>
+    </tr>
+    <tr *ngFor="let n of narudzbine" [ngClass]="{'crvena': n.suma > 20, 'zelena': n.suma < 2}">
+        <td>{{n.kupac}}</td>
+        <td>
+            <tr>
+                <th>Naziv</th>
+                <th>Kolicina</th>
+            </tr>
+            <tr *ngFor="let p of n.proizvodi">
+                <td>{{p.naziv}}</td>
+                <td>{{p.kolicina}}</td>
+            </tr>
+        </td>
+        <td>{{n.racun}}</td>
+    </tr>
+</table>
+<hr>
+<table>
+    <tr>
+        <th>Naziv</th>
+        <th>Kategorija</th>
+        <th>Cijena</th>
+        <th>Stanje</th>
+    </tr>
+    <tr *ngFor="let p of proizvodi" >
+        <td>{{p.naziv}}</td>
+        <td>{{p.kategorija}}</td>
+        <td>{{p.cena}}</td>
+        <td>{{p.stanje}}</td>
+        <td>
+            <input type="number" name="{{p.naziv}}" [(ngModel)]="p.add">
+        </td>
+        <td>
+            <button (click)="dodaj(p)">Dodaj</button>
+        </td>
+    </tr>
+</table>
+<app-logout></app-logout>

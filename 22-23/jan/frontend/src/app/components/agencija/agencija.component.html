@@ -1,0 +1,38 @@
+<b>Naziv: </b> {{agencija.naziv}} <br>
+<b>PIB: </b> {{agencija.PIB}} <br>
+<hr>
+<table>
+    <tr>
+        <th>Tip usluge</th>
+        <th>Lokacija od</th>
+        <th>Lokacija do</th>
+        <th>Period putovanja</th>
+        <th>Broj preostalih mjesta</th>
+        <th>Cijena</th>
+    </tr>
+    <tr *ngFor="let p of agencija.usluge" [ngClass]="{'zuta': p.broj_mesta < 5}">
+        <td>{{p.tip}}</td>
+        <td>{{p.lokacija_od}}</td>
+        <td>{{p.lokacija_do}}</td>
+        <td>{{p.period}}</td>
+        <td>{{p.broj_mesta}}</td>
+        <td>{{p.cena}}</td>
+    </tr>
+</table>
+<hr>
+<form>
+    Tip: 
+    <select [(ngModel)]="tip" name="tip">
+        <option value="aviokarta">Avio karta</option>
+        <option value="brzivoz">Brzi voz</option>
+        <option value="hotel">Hotelski smjestaj</option>
+    </select> <br>
+    Lokacija od: <input type="text" name="lokacija_od" [(ngModel)]="lokacija_od" [disabled]="tip == 'hotel'"> <br>
+    Lokacija od: <input type="text" name="lokacija_do" [(ngModel)]="lokacija_do"> <br>
+    Period usluge: <input type="text" name="period" [(ngModel)]="period"> <br>
+    Cijena: <input type="number" step="0.01" min="0" name="cena" [(ngModel)]="cena"> <br>
+    Broj mjesta: <input type="number" min="0" name="broj_mesta" [(ngModel)]="broj_mesta"> <br>
+    <button (click)="dodaj()">Dodaj</button>
+</form>
+<span class="err">{{poruka}}</span>
+<app-logout></app-logout>

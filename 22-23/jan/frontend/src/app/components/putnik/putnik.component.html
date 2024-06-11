@@ -1,0 +1,55 @@
+<b>Ime: </b> {{putnik.ime}} <br>
+<b>Prezime: </b> {{putnik.prezime}} <br>
+<b>Imejl: </b> {{putnik.imelj}} <br>
+<b>Trenutna loakcija: </b> 
+<select name="lokacija" [(ngModel)]="putnik.lokacijatrenutna" (change)="update()">
+    <option *ngFor="let l of lokacije" [value]="l">{{l}}</option>
+</select>
+<hr>
+<table>
+    <tr>
+        <th>Naziv agencije</th>
+        <th>Tip usluge</th>
+        <th>Destinacija</th>
+        <th>Broj saputnika</th>
+    </tr>
+    <tr *ngFor="let p of putnik.lista">
+        <td>{{agencije.get(p.idusluge)?.[0]?.naziv}}</td>
+        <td>{{agencije.get(p.idusluge)?.[1]?.tip}}</td>
+        <td>{{p.lokacija_od}} {{(p.lokacija_od==""?"":"-")}} {{p.lokacija_do}}</td>
+        <td>{{p.brojsaputnika}}</td>
+    </tr>
+</table>
+<hr>
+<form>
+    Destinacija: <input type="text" [(ngModel)]="destinacija" name="destinacija"> <br>
+    Tip usluge: 
+    <select name="tip" [(ngModel)]="tipovi" multiple>
+        <option value="aviokarta">Avio karta</option>
+        <option value="brzivoz">Brzi voz</option>
+        <option value="hotel">Hotelski smjestaj</option>
+    </select> <br>
+    Cena od: <input type="number" name="cena_od" step="0.01" [(ngModel)]="cena_od" placeholder="0"> <br>
+    Cena do: <input type="number" name="cena_do" step="0.01" [(ngModel)]="cena_do"> <br>
+    <button (click)="search()">PRONADJI</button>
+</form>
+<table *ngIf="ponude.length > 0">
+    <tr>
+        <th>Tip usluge</th>
+        <th>Lokacija od</th>
+        <th>Lokacija do</th>
+        <th>Period putovanja</th>
+        <th>Broj preostalih mjesta</th>
+        <th>Cijena</th>
+    </tr>
+    <tr *ngFor="let p of ponude">
+        <td>{{p.tip}}</td>
+        <td>{{p.lokacija_od}}</td>
+        <td>{{p.lokacija_do}}</td>
+        <td>{{p.period}}</td>
+        <td>{{p.broj_mesta}}</td>
+        <td><a (click)="kupi(p)">{{p.cena}}</a></td>
+    </tr>
+</table>
+<span *ngIf="ponude.length == 0"><b>Nema rezultata koji zadovoljavaju pretragu</b></span>
+<app-logout></app-logout>

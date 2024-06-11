@@ -1,0 +1,54 @@
+[
+{
+	"naziv": "Aukcija Lepenski vir",
+	"pocetak": "2024-01-08 06:00:00",
+	"kraj": "2024-01-12 20:00:00",
+	"umetnine": [
+	{
+		"naziv": "Danubius",
+		"ponuda": "500",
+		"vlasnik": "pera"
+	},{
+		"naziv": "Vodena vila",
+		"ponuda": "1500",
+		"vlasnik": "pera"
+	},
+	{
+		"naziv": "Adam",
+		"ponuda": null,
+		"vlasnik": null
+	}
+	]
+},
+{
+	"naziv": "Aukcija Gamzigrad",
+	"pocetak": "2024-01-19 06:00:00",
+	"kraj": "2024-01-24 13:45:00",
+	"umetnine": [
+	{
+		"naziv": "Mozaik",
+		"ponuda": "2500",
+		"vlasnik": "zika"
+	},{
+		"naziv": "Tetrarh",
+		"ponuda": null,
+		"vlasnik": null
+	}
+	]
+},
+{
+	"naziv": "Aukcija Viminacijum",
+	"pocetak": "2024-01-17 06:00:00",
+	"kraj": "2024-01-22 13:00:00",
+	"umetnine": [
+	{
+		"naziv": "Novcic",
+		"ponuda": "150",
+		"vlasnik": "mika"
+	},{
+		"naziv": "Kazan",
+		"ponuda": null,
+		"vlasnik": null
+	}
+	]
+}]

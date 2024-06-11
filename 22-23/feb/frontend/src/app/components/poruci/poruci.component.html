@@ -1,0 +1,16 @@
+<table>
+    <tr>
+        <th>Naziv</th>
+        <th>Cijena po kg</th>
+    </tr>
+    <tr *ngFor="let p of proizvodi">
+        <td>{{p[0].naziv}}</td>
+        <td>{{p[0].cena}}</td>
+        <td>
+            <input type="text" [(ngModel)]="p[1]" name="kolicina">
+        </td>
+    </tr>
+</table> 
+<button (click)="gotovo()">Gotovo</button> <br>
+<span>{{poruka}}</span>
+<app-logout></app-logout>
